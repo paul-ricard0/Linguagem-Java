@@ -1,0 +1,17 @@
+package provas.av2.exer01;
+
+import java.io.FileInputStream;
+
+import javax.swing.JOptionPane;
+
+public class Exer01 {
+	
+	public static void main(String[] args) {
+		
+		FileInputStream entrada1 =null;
+		FileInputStream entrada2 = null;
+		boolean igual = true;
+		
+		String nome1 = JOptionPane.showInputDialog("Qual o Diretorio e Nome do primeiro arquivo? ");
+	}
+}

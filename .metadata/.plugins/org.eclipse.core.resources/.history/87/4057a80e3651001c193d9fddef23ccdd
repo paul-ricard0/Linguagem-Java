@@ -1,0 +1,184 @@
+package laboratorios.lab08;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class Tools {
+	
+	static final String DRIVER = "org.h2.Driver";
+	static final String URL = "jdbc:h2:file:~/NewtonDados/livros/livros";
+	static final String USER = "root";
+	static final String PW = "";
+
+	
+	
+	public static Connection obterConecao() throws Exception {
+		Connection con = null;
+		
+		Class.forName(DRIVER); //testando carga do driver
+		
+		con = DriverManager.getConnection(URL, USER, PW); // Obtendo conexão
+		System.out.println("Conexão obtida com SUCESSO!\n");
+		
+		return con;
+	}
+	
+	public static void closeCon(Connection con) throws SQLException{
+			if (con != null && !con.isClosed()) {
+				con.close();
+				System.out.println("\nINFO: conexão com o banco ENCERRADA");
+			}else {
+				System.out.println("\nINFO: conexão inexistente ou já encerrada");
+			}
+	 }
+	
+	public static void select(Connection con) throws SQLException{
+
+		var statement = con.createStatement();
+		var txtSql = "select * from livros";
+		
+		var result = statement.executeQuery(txtSql);
+		var tabela = new ArrayList<String>();
+		
+		if(result.next() == false) {
+			System.out.println("Nenhum resultado encontrado.");
+		}else {
+			//Processamento
+			
+			while(result.next()) {
+				var id = result.getInt("id");
+				var titulo = result.getString("titulo");
+				var autor = result.getString("autor");
+				var ano_publicacao = result.getInt("ano_publicacao");
+				var editora = result.getString("editora");
+				var categorias = result.getString("categorias");
+				
+				var line = id + " | " + titulo + " | " + autor + " | "
+						+ ano_publicacao  + " | " + editora  + " | " + categorias;
+				
+				tabela.add(line);
+			}
+		}
+
+		result.close();
+		statement.close();
+		
+		System.out.println("\n=========================================");
+		for(var item: tabela) {
+			System.out.println(item);
+		}
+		System.out.println("\n=========================================");
+	}
+	
+	public static void criar(Connection con, String titulo, String autor, 
+			int ano_publicacao, String editora, String categorias) throws Exception{
+		
+		var statement = con.createStatement();
+		var sql = "insert into livros (titulo, autor, ano_publicacao, editora, categorias) "
+				+ "values('" +titulo+ "', '" +autor+  "', " +ano_publicacao+ ", '" +
+				editora+ "', '" +categorias+ "')"; 
+		
+		var res = statement.executeUpdate(sql);
+		System.out.println("\nLinhas atualizadas: " + res);
+		
+		statement.close();
+	}
+
+	public static void selectTitulo(Connection con, String titulo) throws SQLException{
+		var  statement = con.createStatement();
+		
+		var sql = "select * from livros where titulo = '"+titulo.toLowerCase()+"'";
+		var result = statement.executeQuery(sql);
+		
+		var tabela = new ArrayList<String>();
+		if (result.next() == false) {
+			System.out.println("Nenhum resultado encontrado.");
+		}else {
+			do{
+				var id = result.getInt("id");
+				var titulox = result.getString("titulo");
+				var autor = result.getString("autor");
+				var ano_publicacao = result.getInt("ano_publicacao");
+				var editora = result.getString("editora");
+				var categorias = result.getString("categorias");
+				
+				var line = id + " | " + titulox + " | " + autor + " | "
+						+ ano_publicacao  + " | " + editora  + " | " + categorias;
+				
+				tabela.add(line);
+			}while(result.next()); 
+		}
+		
+		result.close();
+		statement.close();
+		
+		System.out.println("\n=========================================");
+		for(var item: tabela) {
+			System.out.println(item);
+		}
+		System.out.println("\n=========================================");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void update(Connection con, String titulo, String newtitulo,
+			String autor, int ano_publicacao, String editora, String categorias) throws SQLException{
+		
+		var statement = con.createStatement();
+		var txtSql = "update livros set titulo='"+newtitulo+ "',autor='"+ autor +
+				"',ano_publicacao='"+ano_publicacao +"',editora='"+editora +
+				"',categorias='"+categorias+"' where titulo = "+ titulo;
+		
+		var result = statement.executeUpdate(txtSql);
+		
+		System.out.println("\nLinhas atualizadas: " + result);
+		
+		statement.close();
+	}
+	
+	
+
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

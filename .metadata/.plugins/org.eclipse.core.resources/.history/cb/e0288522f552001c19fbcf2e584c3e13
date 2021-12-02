@@ -1,0 +1,13 @@
+package provas.av2;
+
+public class Exer03 {
+	
+	public static void main(String[] args) {
+		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

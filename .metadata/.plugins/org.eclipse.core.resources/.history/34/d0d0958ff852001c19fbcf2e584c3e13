@@ -1,0 +1,34 @@
+package provas.av2.exer01;
+
+import java.io.FileInputStream;
+
+import javax.swing.JOptionPane;
+
+public class Exer01 {
+	
+	public static void main(String[] args) {
+		
+		FileInputStream fis =null;
+
+		
+		String caminho = JOptionPane.showInputDialog("Digite apenas o caminho (a pasta que se encontra: ");
+		String nome = JOptionPane.showInputDialog("Digite o nome do arquivo: ");
+		
+		try {
+			
+			fis = new FileInputStream(caminho+nome);
+			
+			int c;
+			
+			int numBytes = 0;
+			while ((c = fis.read()) != -1) { 
+				
+				System.out.println(c + " = " +fis(char)c);
+				numBytes++;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

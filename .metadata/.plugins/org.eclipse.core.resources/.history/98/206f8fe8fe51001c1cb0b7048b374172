@@ -1,0 +1,60 @@
+package laboratorios.lab08;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		Connection con = null;
+		int op=0, id;
+		
+		try {
+			
+			con = Tools.obterConecao();
+			
+			while(op != 6) {
+				op = Tools.menu();
+				
+				switch (op) {
+					case 1: // listagem
+						Tools.select(con);
+						break;
+					case 2: // criar
+						
+						var titulo = JOptionPane.showInputDialog("Informe o ID desejado:")
+						
+						
+						
+						
+						break;
+					case 3: // obter por ID
+						
+						id = Integer.parseInt( JOptionPane.showInputDialog("Informe o ID desejado:"))
+;
+
+						// recuperar um item
+						Tools.selectCategorias(con, id);
+						break;
+				}
+			}
+			
+			
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("ERRO: driver de conexão não encontrado.");
+			
+		} catch (SQLException e) {
+			System.out.println("ERRO: não foi possível conectar com banco - " + e.getMessage());
+			
+		} finally {
+			Tools.closeCon(con);
+		}
+
+	}
+	
+}

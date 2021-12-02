@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\Users\paulo\Documents\Arquivos-PR\P.Ricardo\College\Períodos\2021-2\Linguagens de Programação\eclipse-workspace\.metadata\.plugins\org.eclipse.jdt.core
+1602128660.index
+3656074605.index
+3420387494.index
+2810644676.index
+1865797976.index

@@ -1,0 +1,46 @@
+package provas.av2.exer03;
+
+import javax.swing.JOptionPane;
+
+
+
+public class Exer03 {
+	
+	public static void main(String[] args) throws ExcepNaoNumero, ExcepVazio{
+		
+		try {
+			var entrada = JOptionPane.showInputDialog("Digite um número real");
+			validarVazio(entrada);
+			
+			validarTrueNumero(entrada);
+			float valor = Float.parseFloat(entrada);
+			System.out.println("Você digitou: " + valor);
+		} catch (ExcepNaoNumero | ExcepVazio ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	private static void validarVazio(String num) throws ExcepVazio{
+		if(num == null || num.trim().length() == 0){
+			throw new ExcepVazio();
+		}
+	}
+	
+	
+	private static void validarTrueNumero(String num) throws ExcepNaoNumero{
+		for (int i=0; i<num.length(); i++) {
+			char ch = num.charAt(i);
+			if(!Character.isDigit(ch)) {
+				super("Isso não é número: " + num);
+			}
+		}
+	}
+	
+	public class ExcepNaoNumero extends Exception {
+		
+		public ExcepNaoNumero(String num) {
+			super("Isso não é número: " + num);
+		}
+	}
+	
+}

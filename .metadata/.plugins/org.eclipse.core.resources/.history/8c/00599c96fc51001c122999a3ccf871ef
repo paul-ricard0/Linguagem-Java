@@ -1,0 +1,32 @@
+package laboratorios.lab08;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		Connection con = null;
+		
+		
+		try {
+			Tools.menu();
+			con = Tools.obterConecao();
+//			Tools.selectCategorias(con, "zcx");
+//			Tools.deleteId(con, 36);
+//			Tools.select(con);
+//			Tools.criar(con,"teste", "bbb", 200, "abril", "caguei");
+//			Tools.select(con);
+		} catch (ClassNotFoundException e) {
+			System.out.println("ERRO: driver de conexão não encontrado.");
+			
+		} catch (SQLException e) {
+			System.out.println("ERRO: não foi possível conectar com banco - " + e.getMessage());
+			
+		} finally {
+			Tools.closeCon(con);
+		}
+
+	}
+	
+}

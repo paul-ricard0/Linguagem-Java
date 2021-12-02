@@ -1,0 +1,20 @@
+package provas.av2.exer03;
+
+import javax.swing.JOptionPane;
+
+import laboratorios.lab05.Ex01.ExcepNaoNumero;
+import laboratorios.lab05.Ex01.ExcepVazio;
+
+public class Exer03 {
+	
+	public static void main(String[] args) throws ExcepNaoNumero, ExcepVazio,{
+		
+		try {
+			var entrada = JOptionPane.showInputDialog("Digite um número real");
+			float valor = Float.parseFloat(entrada);
+			System.out.println("Você digitou: " + valor);
+		} catch (ExcepNaoNumero | ExcepVazio e) {
+			
+		}
+	}
+}

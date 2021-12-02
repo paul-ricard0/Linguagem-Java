@@ -1,0 +1,5 @@
+package provas.av2;
+
+public class ExcepNaoNumero {
+
+}

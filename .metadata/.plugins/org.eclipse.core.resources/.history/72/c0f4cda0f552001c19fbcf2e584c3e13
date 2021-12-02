@@ -1,0 +1,17 @@
+package provas.av2;
+
+import javax.swing.JOptionPane;
+
+public class Exer03 {
+	
+	public static void main(String[] args) {
+		
+		try {
+			var entrada = JOptionPane.showInputDialog("Digite um número real");
+			float valor = Float.parseFloat(entrada);
+			System.out.println("Você digitou: " + valor);
+		} catch (Exception e) {
+			
+		}
+	}
+}

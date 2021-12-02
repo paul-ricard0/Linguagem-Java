@@ -1,0 +1,24 @@
+package provas.av2.exer02;
+
+
+
+public class exer02 {
+	
+	public static void main(String[] args) {
+		
+		int num = 12;
+		
+		var fn1 = 1;
+		var fn0 = 0;
+		var fn = 0;
+		
+		for(int i = 0; i<=num-2; i++) {
+			fn = fn1 + fn0; 
+			fn0= fn1;
+			fn1= fn;
+		}
+		
+		System.out.println("Resultado: "+ fn);
+		
+	}
+}
