@@ -1,9 +1,0 @@
-package provas.av2.exer03;
-
-public class Excep extends Exception {
-	
-	public ExcepNaoNumerto(String num) {
-		super("Isso não é número: " + num);
-	}
-}
-

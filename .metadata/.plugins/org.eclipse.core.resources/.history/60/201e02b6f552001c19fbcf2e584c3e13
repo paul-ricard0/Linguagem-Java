@@ -1,8 +1,0 @@
-package provas.av2.exer03;
-
-public class ExcepNegativo extends Exception{
-	
-	public ExcepNegativo(String nome, int num) {
-		super("O "+nome+"não pode ser negativo: "+num);
-	}
-}
